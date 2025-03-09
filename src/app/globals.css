@@ -1,26 +1,100 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #3b82f6;
+  --primary-dark: #2563eb;
+  --secondary: #10b981;
+  --secondary-dark: #059669;
+  --accent: #8b5cf6;
+  --accent-dark: #7c3aed;
+  --success: #22c55e;
+  --success-dark: #16a34a;
+  --warning: #f59e0b;
+  --warning-dark: #d97706;
+  --error: #ef4444;
+  --error-dark: #dc2626;
+  --card-bg: #1e293b;
+  --card-border: #334155;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0f172a;
+    --foreground: #f8fafc;
+    --primary: #3b82f6;
+    --primary-dark: #60a5fa;
+    --secondary: #10b981;
+    --secondary-dark: #34d399;
+    --accent: #8b5cf6;
+    --accent-dark: #a78bfa;
+    --card-bg: #1e293b;
+    --card-border: #334155;
   }
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans, Arial, Helvetica, sans-serif);
+}
+
+/* JobSwitch custom styles */
+.job-card {
+  @apply bg-white dark:bg-[var(--card-bg)] border border-[var(--card-border)] rounded-lg p-6 shadow-sm hover:shadow-md transition-all duration-300;
+}
+
+.btn-primary {
+  @apply bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white rounded-full px-6 py-2 transition-all duration-300;
+}
+
+.btn-secondary {
+  @apply bg-[var(--secondary)] hover:bg-[var(--secondary-dark)] text-white rounded-full px-6 py-2 transition-all duration-300;
+}
+
+.btn-outline {
+  @apply border border-[var(--card-border)] hover:bg-[var(--card-bg)] rounded-full px-6 py-2 transition-all duration-300;
+}
+
+.input-field {
+  @apply w-full p-3 border border-[var(--card-border)] rounded-lg bg-white dark:bg-[var(--card-bg)] focus:ring-2 focus:ring-[var(--primary)] focus:outline-none transition-all duration-300;
+}
+
+/* Fix for input fields with icons */
+.input-with-icon-container {
+  @apply relative;
+}
+
+.input-icon {
+  @apply absolute top-1/2 transform -translate-y-1/2 left-3 text-gray-400 pointer-events-none;
+}
+
+.input-with-icon {
+  @apply pl-10;
+}
+
+/* Fix for textarea with icons */
+.textarea-with-icon-container {
+  @apply relative;
+}
+
+.textarea-icon {
+  @apply absolute top-3 left-3 text-gray-400 pointer-events-none;
+}
+
+.textarea-with-icon {
+  @apply pl-10;
 }
